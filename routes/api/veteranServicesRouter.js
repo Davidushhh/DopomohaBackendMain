@@ -12,17 +12,21 @@ const {
   isVeteranAlreadyHasService,
 } = require("../../middlewares/veteranServicesMiddlewares");
 
-// дані з усіх таблиць з сервісами для ветеранів по id ветерана
-veteranServicesRouter.get("/:id", ctrlWrapper(getAllServicesByVeteranId));
-
 // список всіх таблиць з сервісами для ветеранів
 veteranServicesRouter.get("/", ctrlWrapper(getVeteranServicesTablesList));
+
+// дані з усіх таблиць з сервісами для ветеранів по id ветерана
+veteranServicesRouter.get(
+  "/:id",
+  isVeteranCheck,
+  ctrlWrapper(getAllServicesByVeteranId)
+);
 
 // додавання ветерана в таблицю послуги
 veteranServicesRouter.post(
   "/:table",
   isVeteranCheck,
-  isVeteranAlreadyHasService,
+  // isVeteranAlreadyHasService,
   ctrlWrapper(addVeteranToService)
 );
 

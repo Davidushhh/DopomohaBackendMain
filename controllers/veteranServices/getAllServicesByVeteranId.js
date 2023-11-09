@@ -22,7 +22,7 @@ const getAllServicesByVeteranId = async (req, res, next) => {
 
       if (!result || result.length === 0) {
         return res.status(404).json({
-          message: "not found",
+          message: "veteran services tables not found",
           code: 404,
         });
       }
@@ -57,13 +57,13 @@ const getAllServicesByVeteranId = async (req, res, next) => {
 
       if (data.length === 0) {
         return res.status(404).json({
-          message: "not found",
+          message: "veteran or veteran in services not found",
           code: 404,
         });
       }
 
       return res.status(200).json({
-        message: "veteran services",
+        message: "veteran subs on services",
         code: 200,
         data: data,
       });
