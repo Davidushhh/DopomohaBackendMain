@@ -28,10 +28,12 @@ const getAllServicesByVeteranId = async (req, res, next) => {
       }
 
       async function veteranServicesSearch() {
-        const veteranServicesArr = [];
+        const veteranServicesArr = {};
 
         const promises = result.map((table) => {
           const veteranServiceQuery = `SELECT * FROM ${table.table_name} WHERE veteranId = ?;`;
+
+          veteranServicesArr[table.table_name] = [];
 
           return new Promise((resolve, reject) => {
             pool.query(veteranServiceQuery, [id], (error, results) => {
@@ -43,7 +45,9 @@ const getAllServicesByVeteranId = async (req, res, next) => {
                   return;
                 }
 
-                veteranServicesArr.push(results[0]);
+                console.log("resultS:", results);
+                veteranServicesArr[table.table_name] = [...results];
+                // veteranServicesArr.push(results[0]);
                 resolve();
               }
             });
