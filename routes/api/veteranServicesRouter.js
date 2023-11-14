@@ -1,16 +1,17 @@
 const express = require("express");
 const veteranServicesRouter = express.Router();
 
-const { ctrlWrapper, isVeteranCheck } = require("../../middlewares");
+const {
+  ctrlWrapper,
+  isVeteranCheck,
+  isVeteranCheckOnAdd,
+} = require("../../middlewares");
 const {
   getAllServicesByVeteranId,
   getVeteranServicesTablesList,
   addVeteranToService,
   changeServiceStatus,
 } = require("../../controllers/veteranServices");
-const {
-  isVeteranAlreadyHasService,
-} = require("../../middlewares/veteranServicesMiddlewares");
 
 // список всіх таблиць з сервісами для ветеранів
 veteranServicesRouter.get("/", ctrlWrapper(getVeteranServicesTablesList));
@@ -25,8 +26,7 @@ veteranServicesRouter.get(
 // додавання ветерана в таблицю послуги
 veteranServicesRouter.post(
   "/:table",
-  isVeteranCheck,
-  // isVeteranAlreadyHasService,
+  isVeteranCheckOnAdd,
   ctrlWrapper(addVeteranToService)
 );
 

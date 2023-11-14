@@ -1,7 +1,7 @@
-const { isVeteranAlreadyHasService } = require("./isVeteranAlreadyHasService");
 const { isVeteranCheck } = require("./isVeteranCheck");
+const { isVeteranCheckOnAdd } = require("./isVeteranCheckOnAdd");
 
 module.exports = {
   isVeteranCheck,
-  isVeteranAlreadyHasService,
+  isVeteranCheckOnAdd,
 };

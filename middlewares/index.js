@@ -4,7 +4,10 @@ const { createShliakhPdf, createPdfTest } = require("./pdfMiddlewares");
 const upload = require("./upload");
 const { sendShliakhFiles } = require("./shliakhMiddlewares");
 const { getUserData, sendVeteranData } = require("./userCabinetMiddlewares");
-const { isVeteranCheck } = require("./veteranServicesMiddlewares");
+const {
+  isVeteranCheck,
+  isVeteranCheckOnAdd,
+} = require("./veteranServicesMiddlewares");
 
 module.exports = {
   ctrlWrapper,
@@ -16,4 +19,5 @@ module.exports = {
   getUserData,
   sendVeteranData,
   isVeteranCheck,
+  isVeteranCheckOnAdd,
 };

@@ -12,7 +12,7 @@ const addVeteranToService = async (req, res, next) => {
   } = req.body;
 
   try {
-    const addVeteranQuery = `INSERT INTO ${table} (veteranId, veteranName, veteranAddress, veteranPhone, serviceStatus) VALUES (?, ?, ?, ?)`;
+    const addVeteranQuery = `INSERT INTO ${table} (veteranId, veteranName, veteranAddress, veteranPhone) VALUES (?, ?, ?, ?)`;
 
     pool.query(
       addVeteranQuery,
