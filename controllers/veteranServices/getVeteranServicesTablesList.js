@@ -26,6 +26,8 @@ const getVeteranServicesTablesList = async (req, res, next) => {
         });
       }
 
+      console.log("result", result);
+
       return res.status(200).json({
         message: "veteran services table list",
         code: 200,

@@ -9,9 +9,9 @@ const changeServiceStatus = async (req, res, next) => {
     const newStatusQuery = `UPDATE ${table} SET serviceStatus = ? WHERE veteranId = ?`;
 
     if (!serviceStatus) {
-      return res.status(401).json({
-        message: "not status provided",
-        code: 401,
+      return res.status(400).json({
+        message: "no status provided",
+        code: 400,
       });
     }
 
