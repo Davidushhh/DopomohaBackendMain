@@ -5,10 +5,11 @@ const getVeteranServicesTablesList = async (req, res, next) => {
 
   try {
     const searchTablesQuery = `
-      SELECT table_name
-      FROM information_schema.tables
-      WHERE table_schema = ?
-      AND table_name LIKE 'veteran_services%';
+      SELECT t.table_name, v.serviceName_cyrillic, v.documents, v.details
+      FROM information_schema.tables t
+      JOIN veteranServices_list v ON t.table_name = v.tableName
+      WHERE t.table_schema = ?
+      AND t.table_name LIKE 'veteran_services%';
     `;
 
     pool.query(searchTablesQuery, [DB], async (err, result) => {
@@ -31,7 +32,8 @@ const getVeteranServicesTablesList = async (req, res, next) => {
       return res.status(200).json({
         message: "veteran services table list",
         code: 200,
-        data: result.map((table) => table.table_name),
+        data: result,
+        // data: result.map((table) => table.table_name),
       });
     });
   } catch (error) {

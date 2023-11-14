@@ -8,15 +8,15 @@ const addVeteranToService = async (req, res, next) => {
     veteranName = null,
     veteranAddress = null,
     veteranPhone = null,
-    serviceStatus = null,
+    // serviceStatus = null,
   } = req.body;
 
   try {
-    const addVeteranQuery = `INSERT INTO ${table} (veteranId, veteranName, veteranAddress, veteranPhone, serviceStatus) VALUES (?, ?, ?, ?, ?)`;
+    const addVeteranQuery = `INSERT INTO ${table} (veteranId, veteranName, veteranAddress, veteranPhone, serviceStatus) VALUES (?, ?, ?, ?)`;
 
     pool.query(
       addVeteranQuery,
-      [veteranId, veteranName, veteranAddress, veteranPhone, serviceStatus],
+      [veteranId, veteranName, veteranAddress, veteranPhone],
       async (err, result) => {
         if (err) {
           console.log(err);
@@ -34,7 +34,7 @@ const addVeteranToService = async (req, res, next) => {
         }
 
         return res.status(200).json({
-          message: "veteran added",
+          message: "veteran added to service",
           code: 201,
         });
       }
