@@ -8,7 +8,6 @@ const addVeteranToService = async (req, res, next) => {
     veteranName = null,
     veteranAddress = null,
     veteranPhone = null,
-    // serviceStatus = null,
   } = req.body;
 
   try {

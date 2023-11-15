@@ -29,6 +29,7 @@ const getAllServicesByVeteranId = async (req, res, next) => {
 
       async function veteranServicesSearch() {
         const veteranServicesArr = {};
+        // const veteranServicesArr = [];
 
         const promises = result.map((table) => {
           const veteranServiceQuery = `SELECT * FROM ${table.table_name} WHERE veteranId = ?;`;
