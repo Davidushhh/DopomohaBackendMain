@@ -1,3 +1,4 @@
 const { pollJunior } = require("./pollJunior");
+const { pollOvaAudit } = require("./pollOvaAudit");
 
-module.exports = { pollJunior };
+module.exports = { pollJunior, pollOvaAudit };
