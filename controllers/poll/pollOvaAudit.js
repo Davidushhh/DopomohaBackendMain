@@ -70,8 +70,23 @@ const pollOvaAudit = async (req, res, next) => {
         }
 
         return res.status(201).json({
-          message: "poll ova audit data added",
           code: 201,
+          message: "poll ova audit data added",
+          data: {
+            isWorkingWithPublicInfo,
+            howOftenSentPublicRequest,
+            spheresOfPublicRequests,
+            howOftenUseWebsite,
+            whichInfoResourcesUse,
+            whichPublicInfoUse,
+            whichSperesToAudit,
+            whichDepartmentsToAudit,
+            propositions,
+            isPermanentLiveIn,
+            sex,
+            age,
+            conatacts,
+          },
         });
       }
     );
