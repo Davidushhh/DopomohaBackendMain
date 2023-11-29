@@ -100,5 +100,3 @@ const pollOvaAudit = async (req, res, next) => {
 };
 
 module.exports = { pollOvaAudit };
-
-console.log("hi");
