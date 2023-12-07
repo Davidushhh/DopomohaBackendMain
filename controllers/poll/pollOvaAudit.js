@@ -58,8 +58,6 @@ const pollOvaAudit = async (req, res, next) => {
         sex,
         age,
         conatacts,
-
-        // .join("; "),
       ],
       (err, result) => {
         if (err) {
