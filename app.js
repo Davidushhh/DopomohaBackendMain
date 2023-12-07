@@ -21,6 +21,12 @@ app.use("/api/shliakh", shliakhRouter);
 app.use("/api/poll", pollRouter);
 app.use("/api/veteran-dog", veteranDogRouter);
 
+app.use("/api/test", (req, res) => {
+  res.status(200).json({
+    message: "fuck off",
+  });
+});
+
 app.use("/api/veteran-services", veteranServicesRouter);
 
 app.use((req, res) => {
