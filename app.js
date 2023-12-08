@@ -7,6 +7,7 @@ const shliakhRouter = require("./routes/api/shliakhRouter");
 const pollRouter = require("./routes/api/pollRouter");
 const veteranDogRouter = require("./routes/api/veteranDogRouter");
 const veteranServicesRouter = require("./routes/api/veteranServicesRouter");
+const employerRouter = require("./routes/api/employerRouter");
 
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
@@ -20,14 +21,14 @@ app.use("/api/user-cabinet", userCabinet);
 app.use("/api/shliakh", shliakhRouter);
 app.use("/api/poll", pollRouter);
 app.use("/api/veteran-dog", veteranDogRouter);
+app.use("/api/veteran-services", veteranServicesRouter);
+app.use("/api/employer", employerRouter);
 
 app.use("/api/test", (req, res) => {
   res.status(200).json({
     message: "fuck off",
   });
 });
-
-app.use("/api/veteran-services", veteranServicesRouter);
 
 app.use((req, res) => {
   res.status(404).json({

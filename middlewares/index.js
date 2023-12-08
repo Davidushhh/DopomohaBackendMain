@@ -8,6 +8,7 @@ const {
   isVeteranCheck,
   isVeteranCheckOnAdd,
 } = require("./veteranServicesMiddlewares");
+const { isEmployerCheck } = require("./employerMiddlewares/isEmployerCheck");
 
 module.exports = {
   ctrlWrapper,
@@ -20,4 +21,5 @@ module.exports = {
   sendVeteranData,
   isVeteranCheck,
   isVeteranCheckOnAdd,
+  isEmployerCheck,
 };
