@@ -14,7 +14,7 @@ const changeEmployerStatus = async (req, res, next) => {
   const employer_status = 0;
 
   console.log(
-    "body",
+    "body in change",
     company_name,
     contact_person,
     contact_phone,

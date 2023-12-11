@@ -42,9 +42,19 @@ const addEmployerToList = async (req, res, next) => {
           });
         }
 
+        console.log(
+          "body in the end",
+          company_name,
+          contact_person,
+          contact_phone,
+          company_mail,
+          company_logo
+        );
+
         return res.status(200).json({
           message: "user status changed and added to employers list",
           code: 201,
+          data: req.body,
         });
       }
     );
