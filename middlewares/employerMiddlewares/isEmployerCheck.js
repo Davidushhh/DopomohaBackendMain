@@ -34,14 +34,14 @@ const isEmployerCheck = async (req, res, next) => {
       if (result[0].employer_status === 0) {
         return res.status(400).json({
           message: "this user in pending state",
-          code: 404,
+          code: 400,
         });
       }
 
       if (result[0].employer_status === 1) {
         return res.status(400).json({
           message: "this user is already employer",
-          code: 404,
+          code: 400,
         });
       }
 

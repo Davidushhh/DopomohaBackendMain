@@ -13,24 +13,8 @@ const changeEmployerStatus = async (req, res, next) => {
 
   const employer_status = 0;
 
-  console.log(
-    "body in change",
-    company_name,
-    contact_person,
-    contact_phone,
-    company_mail,
-    company_logo
-  );
-
   try {
     const newStatusQuery = `UPDATE dc_users SET employer_status = ? WHERE id = ?`;
-
-    // if (!employer_status) {
-    //   return res.status(400).json({
-    //     message: "no status provided",
-    //     code: 400,
-    //   });
-    // }
 
     pool.query(newStatusQuery, [employer_status, id], async (err, result) => {
       if (err) {
