@@ -25,15 +25,22 @@ const isEmployerCheck = async (req, res, next) => {
       console.log("result:", result);
 
       if (!result.length) {
-        return res.status(401).json({
+        return res.status(404).json({
           message: "user not found",
           code: 404,
         });
       }
 
       if (result[0].employer_status === 0) {
-        return res.status(401).json({
+        return res.status(400).json({
           message: "this user in pending state",
+          code: 404,
+        });
+      }
+
+      if (result[0].employer_status === 1) {
+        return res.status(400).json({
+          message: "this user is already employer",
           code: 404,
         });
       }
