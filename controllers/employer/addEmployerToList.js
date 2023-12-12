@@ -11,22 +11,15 @@ const addEmployerToList = async (req, res, next) => {
     company_logo = null,
   } = req.body;
 
-  const employer_status = 0;
-
   try {
-    const upsertUserAndEmployerQuery = `
-    START TRANSACTION;
-    UPDATE dc_users SET employer_status = ? WHERE id = ?;
+    const addEmployerQuery = `    
     INSERT INTO employers_list (employerId, company_name, contact_person, contact_phone, company_mail, company_logo, activation_key)
-    VALUES (?, ?, ?, ?, ?, ?, ?);
-    COMMIT;
+    VALUES (?, ?, ?, ?, ?, ?, ?);    
   `;
 
     pool.query(
-      upsertUserAndEmployerQuery,
+      addEmployerQuery,
       [
-        employer_status,
-        id,
         id,
         company_name,
         contact_person,

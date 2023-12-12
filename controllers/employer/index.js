@@ -1,3 +1,4 @@
 const { addEmployerToList } = require("./addEmployerToList");
+const { changeEmployerStatus } = require("./changeEmployerStatus");
 
-module.exports = { addEmployerToList };
+module.exports = { addEmployerToList, changeEmployerStatus };
