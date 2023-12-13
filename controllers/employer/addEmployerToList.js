@@ -1,5 +1,6 @@
 const { uid } = require("uid");
 const { pool, mailer } = require("../../models");
+const { link } = require("joi");
 
 const addEmployerToList = async (req, res, next) => {
   const { id } = req.params;
@@ -15,7 +16,10 @@ const addEmployerToList = async (req, res, next) => {
     const addEmployerQuery = `    
     INSERT INTO employers_list (employerId, company_name, contact_person, contact_phone, company_mail, company_logo, activation_key)
     VALUES (?, ?, ?, ?, ?, ?, ?);    
-  `;
+    `;
+
+    const activationKey = uid(16);
+    console.log("activationKey", activationKey);
 
     pool.query(
       addEmployerQuery,
@@ -26,7 +30,7 @@ const addEmployerToList = async (req, res, next) => {
         contact_phone,
         company_mail,
         company_logo,
-        uid(16),
+        activationKey,
       ],
       async (err, result) => {
         if (err) {
@@ -56,7 +60,7 @@ const addEmployerToList = async (req, res, next) => {
                 <p>Контактний e-mail: ${company_mail}</p>
 
                 <p>Надати статус роботодавця можна за посиланням нижче:</p>
-                <a href="#">Перейти для наданя статус</a>`,
+                <a href="https://dopomoha.carpathia.gov.ua/verify-employer?id=${id}&key=${activationKey}">Перейти для наданя статус</a>`,
         });
 
         res.status(200).json({
