@@ -10,7 +10,8 @@ const isEmployerCheck = async (req, res, next) => {
     });
   }
 
-  const userQuery = "SELECT employer_status FROM dc_users WHERE ID = ?";
+  const userQuery =
+    "SELECT employer_status FROM employers_list WHERE employerId = ?";
 
   try {
     pool.query(userQuery, [id], (err, result) => {
@@ -22,30 +23,35 @@ const isEmployerCheck = async (req, res, next) => {
         });
       }
 
-      console.log("result:", result);
-
       if (!result.length) {
-        return res.status(404).json({
-          message: "user not found",
-          code: 404,
-        });
-      }
+        // res.status(404).json({
+        //   message: "user not found",
+        //   code: 404,
+        // });
 
-      if (result[0].employer_status === 0) {
+        next();
+      } else if (result[0].employer_status === 0) {
         return res.status(400).json({
           message: "this user in pending state",
           code: 400,
         });
-      }
-
-      if (result[0].employer_status === 1) {
+      } else if (result[0].employer_status === 1) {
         return res.status(400).json({
           message: "this user is already employer",
           code: 400,
         });
+      } else if (result[0].employer_status === 2) {
+        return res.status(400).json({
+          message: "this user was rejected",
+          code: 400,
+        });
+      } else {
+        return res.status(400).json({
+          message:
+            "it seems this user is already exists, but with incorrect stasus, check DB for details",
+          code: 400,
+        });
       }
-
-      next();
     });
   } catch (error) {
     console.log(error);

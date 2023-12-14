@@ -11,7 +11,7 @@ const {
 employersRouter.post(
   "/:id",
   isEmployerCheck,
-  ctrlWrapper(changeEmployerStatus),
+  // ctrlWrapper(changeEmployerStatus),
   ctrlWrapper(addEmployerToList)
 );
 

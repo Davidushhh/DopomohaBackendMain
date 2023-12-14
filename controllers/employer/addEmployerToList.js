@@ -1,6 +1,5 @@
 const { uid } = require("uid");
 const { pool, mailer } = require("../../models");
-const { link } = require("joi");
 
 const addEmployerToList = async (req, res, next) => {
   const { id } = req.params;
@@ -19,7 +18,6 @@ const addEmployerToList = async (req, res, next) => {
     `;
 
     const activationKey = uid(16);
-    console.log("activationKey", activationKey);
 
     pool.query(
       addEmployerQuery,
