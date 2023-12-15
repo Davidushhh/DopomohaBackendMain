@@ -4,7 +4,7 @@ const employersRouter = express.Router();
 const { ctrlWrapper, isEmployerCheck } = require("../../middlewares");
 const {
   addEmployerToList,
-  changeEmployerStatus,
+  // changeEmployerStatus,
 } = require("../../controllers/employer");
 
 // зміна статусу юзера на роботодавця та його додавання в список роботодавців
