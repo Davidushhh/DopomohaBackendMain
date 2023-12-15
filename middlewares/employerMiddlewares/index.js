@@ -1,3 +1,4 @@
 const { isEmployerCheck } = require("./isEmployerCheck");
+const { isUserCheck } = require("./isUserCheck");
 
-module.exports = { isEmployerCheck };
+module.exports = { isEmployerCheck, isUserCheck };
