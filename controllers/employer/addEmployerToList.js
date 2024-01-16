@@ -50,7 +50,7 @@ const addEmployerToList = async (req, res, next) => {
 
         await mailer.sendMail({
           from: "info@dopomoha.carpathia.gov.ua",
-          to: "nickleso.work@gmail.com, trant755@gmail.com",
+          to: "nickleso.work@gmail.com, trant755@gmail.com, ihor.economy@gmail.com",
           subject: `Новий роботодавець: ${company_name}`,
           html: `<h2>Запит на отримання статусу роботодавця</h2>
 
