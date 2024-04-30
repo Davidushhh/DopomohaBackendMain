@@ -1,4 +1,5 @@
 const { pool } = require("../../models");
+const { createCSVfile } = require("./createCSVfile");
 
 const getBorderTable = async (req, res, next) => {
   const table = "border_zone_users";
@@ -30,12 +31,15 @@ const getBorderTable = async (req, res, next) => {
         });
       }
 
-      return res.status(200).json({
-        message: "success",
-        code: 200,
-        length: result.length,
-        data: result,
-      });
+      console.log(5454354);
+      createCSVfile(result);
+
+      // return res.status(200).json({
+      //   message: "success",
+      //   code: 200,
+      //   length: result.length,
+      //   data: result,
+      // });
     });
   } catch (error) {
     console.log(error);

@@ -6,10 +6,10 @@ const {
   signupValidation,
   loginValidation,
 } = require("../../middlewares");
+
 const { authMiddleware } = require("../../middlewares/authMiddleware");
-
 const { getBorderTable } = require("../../controllers/border/getBorderTable");
-
+const { createCSVfile } = require("../../controllers/border/createCSVfile");
 const {
   getCurrentUser,
   signup,
@@ -17,14 +17,20 @@ const {
   logout,
 } = require("../../controllers/auth");
 
-// таблиця з даними
-borderRouter.get("/table", authMiddleware, ctrlWrapper(getBorderTable));
-
-// бордер юзери авторизація
+// юзери авторизація
 borderRouter.get("/current-user", authMiddleware, ctrlWrapper(getCurrentUser));
 borderRouter.get("/logout", authMiddleware, ctrlWrapper(logout));
-
 borderRouter.post("/signup", signupValidation, ctrlWrapper(signup));
 borderRouter.post("/login", loginValidation, ctrlWrapper(login));
+
+// таблиця з даними
+borderRouter.get("/table-data", authMiddleware, ctrlWrapper(getBorderTable));
+
+// трансформувати дані в CSV і відправити на фронт
+// borderRouter.get(
+//   "/excel",
+//   // authMiddleware,
+//   ctrlWrapper(createCSVfile)
+// );
 
 module.exports = borderRouter;
