@@ -11,6 +11,9 @@ const {
 const { isEmployerCheck } = require("./employerMiddlewares/isEmployerCheck");
 const { isUserCheck } = require("./employerMiddlewares/isUserCheck");
 
+const { authMiddleware } = require("./authMiddleware");
+const { signupValidation, loginValidation } = require("./authValidation");
+
 module.exports = {
   ctrlWrapper,
   sendFiles,
@@ -24,4 +27,7 @@ module.exports = {
   isVeteranCheckOnAdd,
   isUserCheck,
   isEmployerCheck,
+  signupValidation,
+  loginValidation,
+  authMiddleware,
 };
