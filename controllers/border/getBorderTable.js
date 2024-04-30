@@ -1,15 +1,8 @@
 const { pool } = require("../../models");
-const { createCSVfile } = require("./createCSVfile");
 
 const getBorderTable = async (req, res, next) => {
   const table = "border_zone_users";
   const { borderSquad } = req.user;
-
-  console.log(`borderSquad from req user: ${borderSquad}`);
-
-  // const borderSquad1 = "Для Ужгородського району";
-  // const borderSquad2 =
-  //   "Для Берегівського, Хустського, Тячівського та Рахівського районів";
 
   try {
     const searchTablesQuery = `
@@ -31,15 +24,8 @@ const getBorderTable = async (req, res, next) => {
         });
       }
 
-      console.log(5454354);
-      createCSVfile(result);
-
-      // return res.status(200).json({
-      //   message: "success",
-      //   code: 200,
-      //   length: result.length,
-      //   data: result,
-      // });
+      req.borderData = result;
+      next();
     });
   } catch (error) {
     console.log(error);

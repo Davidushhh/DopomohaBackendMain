@@ -9,6 +9,7 @@ const {
 
 const { authMiddleware } = require("../../middlewares/authMiddleware");
 const { getBorderTable } = require("../../controllers/border/getBorderTable");
+
 const { createCSVfile } = require("../../controllers/border/createCSVfile");
 const {
   getCurrentUser,
@@ -24,13 +25,11 @@ borderRouter.post("/signup", signupValidation, ctrlWrapper(signup));
 borderRouter.post("/login", loginValidation, ctrlWrapper(login));
 
 // таблиця з даними
-borderRouter.get("/table-data", authMiddleware, ctrlWrapper(getBorderTable));
-
-// трансформувати дані в CSV і відправити на фронт
-// borderRouter.get(
-//   "/excel",
-//   // authMiddleware,
-//   ctrlWrapper(createCSVfile)
-// );
+borderRouter.get(
+  "/table-data",
+  authMiddleware,
+  ctrlWrapper(getBorderTable),
+  createCSVfile
+);
 
 module.exports = borderRouter;
