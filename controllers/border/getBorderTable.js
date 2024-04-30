@@ -1,16 +1,21 @@
 const { pool } = require("../../models");
 
 const getBorderTable = async (req, res, next) => {
-  // const { table } = req.params;
+  const { borderSquad } = req.user;
+  console.log(`borderSquad from req user: ${borderSquad}`);
 
-  const table = "border_squad_users";
+  const table = "border_zone_users";
+
+  const borderSquad1 = "Для Ужгородського району";
+  const borderSquad2 =
+    "Для Берегівського, Хустського, Тячівського та Рахівського районів";
 
   try {
     const searchTablesQuery = `
-      SELECT * FROM border_squad_users;
+      SELECT * FROM ${table} WHERE borderSquad = ?;
     `;
 
-    pool.query(searchTablesQuery, [table], async (err, result) => {
+    pool.query(searchTablesQuery, [borderSquad1], async (err, result) => {
       if (err) {
         return res.status(404).json({
           message: err.message,
@@ -27,12 +32,11 @@ const getBorderTable = async (req, res, next) => {
         });
       }
 
-      console.log("result", result);
-
       return res.status(200).json({
-        message: "border table",
+        message: "success",
         code: 200,
-        result,
+        length: result.length,
+        data: result,
       });
     });
   } catch (error) {
