@@ -18,7 +18,7 @@ const {
 } = require("../../controllers/auth");
 
 // таблиця з даними
-borderRouter.get("/table-data", authMiddleware, ctrlWrapper(getBorderTable));
+borderRouter.get("/table", authMiddleware, ctrlWrapper(getBorderTable));
 
 // бордер юзери авторизація
 borderRouter.get("/current-user", authMiddleware, ctrlWrapper(getCurrentUser));
