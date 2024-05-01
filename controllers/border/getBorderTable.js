@@ -6,7 +6,8 @@ const getBorderTable = async (req, res, next) => {
 
   try {
     const searchTablesQuery = `
-      SELECT * FROM ${table} WHERE borderSquad = ?;
+      SELECT * FROM ${table} WHERE borderSquad = ? AND createdAt >= CURDATE()
+  AND createdAt < CURDATE() + INTERVAL 1 DAY;
     `;
 
     pool.query(searchTablesQuery, [borderSquad], async (err, result) => {
