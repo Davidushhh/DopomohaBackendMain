@@ -25,7 +25,11 @@ app.use("/api/veteran-dog", veteranDogRouter);
 app.use("/api/veteran-services", veteranServicesRouter);
 app.use("/api/employer", employerRouter);
 
-app.use("/api/border", borderRouter);
+const corsOptions = {
+  origin: "http://192.168.100.132",
+  optionsSuccessStatus: 200,
+};
+app.use("/api/border", cors(corsOptions), borderRouter);
 
 app.use("/api/healthcheck", (req, res) => {
   res.status(200).json({

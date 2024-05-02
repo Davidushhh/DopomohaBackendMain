@@ -32,4 +32,11 @@ borderRouter.get(
   createCSVfile
 );
 
+// тестовий
+borderRouter.get("/test", (req, res) => {
+  res.status(200).json({
+    message: "border ok",
+  });
+});
+
 module.exports = borderRouter;
