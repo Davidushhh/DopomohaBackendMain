@@ -9,6 +9,7 @@ const veteranDogRouter = require("./routes/api/veteranDogRouter");
 const veteranServicesRouter = require("./routes/api/veteranServicesRouter");
 const employerRouter = require("./routes/api/employerRouter");
 const borderRouter = require("./routes/api/borderRouter");
+const creditCompensationRouter = require("./routes/api/creditCompensationRouter");
 
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
@@ -24,6 +25,7 @@ app.use("/api/poll", pollRouter);
 app.use("/api/veteran-dog", veteranDogRouter);
 app.use("/api/veteran-services", veteranServicesRouter);
 app.use("/api/employer", employerRouter);
+app.use("/api/credit-compensation", creditCompensationRouter);
 
 const corsOptions = {
   origin: "http://192.168.100.132",
