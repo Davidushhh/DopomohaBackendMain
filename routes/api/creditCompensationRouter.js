@@ -1,7 +1,10 @@
 const express = require("express");
 const creditCompensationRouter = express.Router();
 
-const { ctrlWrapper } = require("../../middlewares");
+const {
+  ctrlWrapper,
+  creditCompensationMiddleware,
+} = require("../../middlewares");
 
 const {
   createCreditCompensationPdf,
@@ -10,6 +13,7 @@ const {
 // pdf creation
 creditCompensationRouter.post(
   "/create-pdf",
+  creditCompensationMiddleware,
   ctrlWrapper(createCreditCompensationPdf)
 );
 

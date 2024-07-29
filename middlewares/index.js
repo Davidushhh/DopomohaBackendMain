@@ -13,6 +13,9 @@ const { isUserCheck } = require("./employerMiddlewares/isUserCheck");
 
 const { authMiddleware } = require("./authMiddleware");
 const { signupValidation, loginValidation } = require("./authValidation");
+const {
+  creditCompensationMiddleware,
+} = require("./creditCompensationMiddlewares");
 
 module.exports = {
   ctrlWrapper,
@@ -30,4 +33,5 @@ module.exports = {
   signupValidation,
   loginValidation,
   authMiddleware,
+  creditCompensationMiddleware,
 };
