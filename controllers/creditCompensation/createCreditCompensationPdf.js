@@ -33,18 +33,15 @@ const createCreditCompensationPdf = async (req, res, next) => {
     });
 
     const attachmentsPlaceholders = {
-      creditFile:
-        "відомості, надані банківською установою щодо щомісячного зобов’язання суб’єкта господарювання про сплату відсотків за користування кредитом;",
-      vupuska:
-        "виписка/витяг з Єдиного державного реєстру юридичних осіб, фізичних осіб – підприємців та громадських формувань;",
+      creditFile: "кредитний договір;",
+      vupuska: "виписка/витяг з ЄДРПОУ;",
       dovidkaZaborg:
         "довідка про відсутність заборгованості зі сплати податків та зборів;",
       dovidkaBank:
         "довідка банку про реквізити рахунку для перерахування коштів;",
       productionInfo:
-        "іформація щодо підтвердження даних про виробництво промислової продукції (за номенклатурою), сільськогосподарської продукції, на власних або орендованих потужностях, із власної сировини та або сировини замовника, що підтверджується описом товару, документами стандартизації, сертифікатами якості, відповідною номенклатурою товарів, фотофіксацією, договорами, контрактами тощо;",
-      financePlan:
-        "фінансово-виробничий план суб’єкта господарювання, у тому числі щодо збільшення обсягів виробництва продукції, збільшення кількості робочих місць на період дії кредитного договору (у розрізі років дії кредитного договору);",
+        "іформація щодо підтвердження даних про виробництво промислової/сг продукції;",
+      financePlan: "фінансово-виробничий план;",
     };
 
     const attachments = [
@@ -86,21 +83,20 @@ const createCreditCompensationPdf = async (req, res, next) => {
         {
           text: "Департамент економічного та регіонального",
           alignment: "left",
-          fontSize: 14,
-          margin: [240, 0, 0, 5],
+          fontSize: 13,
+          margin: [260, 0, 0, 5],
         },
         {
           text: "розвитку Закарпатської обласної державної",
           alignment: "left",
-          fontSize: 14,
-          margin: [240, 0, 0, 5],
+          fontSize: 13,
+          margin: [260, 0, 0, 5],
         },
         {
           text: "адміністрації – обласної війської адміністрації",
-          decoration: "underline",
           alignment: "left",
-          fontSize: 14,
-          margin: [240, 0, 0, 5],
+          fontSize: 13,
+          margin: [260, 0, 0, 5],
         },
         {
           text: "(найменування організатора конкурсу)",
@@ -110,10 +106,9 @@ const createCreditCompensationPdf = async (req, res, next) => {
         },
         {
           text: `Заявник ${companyType} "${companyName}"`,
-          decoration: "underline",
           alignment: "left",
-          fontSize: 14,
-          margin: [240, 0, 0, 5],
+          fontSize: 13,
+          margin: [260, 0, 0, 5],
         },
         {
           text: "(найменування заявника)",
@@ -123,10 +118,9 @@ const createCreditCompensationPdf = async (req, res, next) => {
         },
         {
           text: directorName,
-          decoration: "underline",
           alignment: "left",
-          fontSize: 14,
-          margin: [240, 0, 0, 5],
+          fontSize: 13,
+          margin: [260, 0, 0, 5],
         },
         {
           text: "(прізвище та ініціали,посада)",
@@ -136,10 +130,9 @@ const createCreditCompensationPdf = async (req, res, next) => {
         },
         {
           text: `Телефон/телефакс ${companyPhone}`,
-          decoration: "underline",
           alignment: "left",
-          fontSize: 14,
-          margin: [240, 0, 0, 20],
+          fontSize: 13,
+          margin: [260, 0, 0, 20],
         },
         {
           text: "ЗАЯВА",
@@ -148,14 +141,13 @@ const createCreditCompensationPdf = async (req, res, next) => {
           margin: [0, 0, 0, 10],
         },
         {
-          text: `Прошу розглянути документи з метою компенсації частини відсоткових ставок за користування кредитами у межах Державної програми „Доступні кредити 5-7-9%” за кредитом, наданим`,
+          text: ` Прошу розглянути документи з метою компенсації частини відсоткових ставок за користування кредитами у межах Державної програми „Доступні кредити 5-7-9%” за кредитом, наданим`,
           alignment: "justify",
           fontSize: 14,
           margin: [0, 0, 0, 5],
         },
         {
           text: bankName,
-          decoration: "underline",
           alignment: "center",
           fontSize: 14,
           margin: [0, 0, 0, 5],
@@ -168,7 +160,6 @@ const createCreditCompensationPdf = async (req, res, next) => {
         },
         {
           text: `для ${projectName}`,
-          decoration: "underline",
           alignment: "center",
           fontSize: 14,
           margin: [0, 0, 0, 5],
@@ -189,7 +180,7 @@ const createCreditCompensationPdf = async (req, res, next) => {
           text: `${index + 1}. ${attachment}`,
           decoration: "underline",
           alignment: "left",
-          fontSize: 12,
+          fontSize: 11,
           margin: [0, 0, 0, 5],
         })),
         {
@@ -217,7 +208,7 @@ const createCreditCompensationPdf = async (req, res, next) => {
           margin: [0, 0, 0, 5],
         },
         {
-          text: `(дата)                                             (підпис)                       (ініціали та прізвище керівника)`,
+          text: `(дата)                                        (підпис)                            (ініціали та прізвище керівника)`,
           alignment: "justify",
           fontSize: 12,
           margin: [30, 0, 0, 0],
