@@ -16,7 +16,7 @@ const createShliakhPdf = async (req, res, next) => {
     daysCount = "дані відсутні",
     directorPosition = "дані відсутні",
 
-    drivers = "дані відсутні",
+    drivers = [],
   } = req.body;
 
   const firmFullName = `${organizationType} ${organizationName}, ${organizationAdress}`;
@@ -69,6 +69,29 @@ const createShliakhPdf = async (req, res, next) => {
       return shortenedName;
     }
 
+    // Форматуємо поточну дату у форматі "DD місяць YYYY р."
+    const monthNames = [
+      "січня",
+      "лютого",
+      "березня",
+      "квітня",
+      "травня",
+      "червня",
+      "липня",
+      "серпня",
+      "вересня",
+      "жовтня",
+      "листопада",
+      "грудня",
+    ];
+
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, "0");
+    const month = monthNames[now.getMonth()];
+    const year = now.getFullYear();
+
+    const formattedDate = `${day} ${month} ${year} р.`;
+
     // pdf markup
     const fonts = {
       TimesNew: {
@@ -100,6 +123,19 @@ const createShliakhPdf = async (req, res, next) => {
           fontSize: 14,
         },
         {
+          // Додаємо горизонтальну лінію на всю ширину аркуша
+          canvas: [
+            {
+              type: "line",
+              x1: 0,
+              y1: 0,
+              x2: 535,
+              y2: 0, // x2 встановлюється на ширину A4 мінус поля
+              lineWidth: 1,
+            },
+          ],
+        },
+        {
           text: `${organizationAdress}, тел. ${organizationTel},`,
           alignment: "center",
           fontSize: 12,
@@ -108,6 +144,16 @@ const createShliakhPdf = async (req, res, next) => {
           text: `код ЄДРПОУ: ${organizationCode}, e-mail: ${organizationMail}`,
           alignment: "center",
           fontSize: 12,
+        },
+        {
+          text: " ",
+          alignment: "right",
+          fontSize: 14,
+        },
+        {
+          text: formattedDate,
+          alignment: "left",
+          fontSize: 14,
         },
         {
           text: " ",
@@ -252,166 +298,217 @@ const createShliakhPdf = async (req, res, next) => {
           fontSize: 14,
           margin: [0, -14, 0, 0],
         },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: "Додаток 1",
-          alignment: "right",
-          fontSize: 14,
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: "ПРОПОЗИЦІЇ",
-          alignment: "center",
-          fontSize: 14,
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: "щодо виїзду за межі України водіїв в умовах правового режиму воєнного стану",
-          alignment: "center",
-          fontSize: 14,
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          table: {
-            widths: [
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-              "auto",
-            ],
-            body: [...arrDrivers],
-          },
-          alignment: "left",
-          margin: [0, 16, 0, 0],
-          fontSize: 10,
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: " ",
-          alignment: "justified",
-          fontSize: 14,
-          margin: [25, 0, 0, 0],
-        },
-        {
-          text: `${
-            directorPosition.charAt(0).toUpperCase() + directorPosition.slice(1)
-          }`,
-          alignment: "left",
-          fontSize: 14,
-        },
-        {
-          text: `${shortenFullName(pibDirector)}`,
-          alignment: "right",
-          fontSize: 14,
-          margin: [0, -14, 0, 0],
-        },
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: "Додаток 1",
+              alignment: "right",
+              fontSize: 14,
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: "ПРОПОЗИЦІЇ",
+              alignment: "center",
+              fontSize: 14,
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: "щодо виїзду за межі України водіїв в умовах правового режиму воєнного стану",
+              alignment: "center",
+              fontSize: 14,
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              table: {
+                widths: [
+                  "auto",
+                  "auto",
+                  "auto",
+                  "auto",
+                  "auto",
+                  "auto",
+                  "auto",
+                  "auto",
+                ],
+                body: [...arrDrivers],
+              },
+              alignment: "left",
+              margin: [0, 16, 0, 0],
+              fontSize: 10,
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: " ",
+              alignment: "justified",
+              fontSize: 14,
+              margin: [25, 0, 0, 0],
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: `${
+                directorPosition.charAt(0).toUpperCase() +
+                directorPosition.slice(1)
+              }`,
+              alignment: "left",
+              fontSize: 14,
+            }
+          : null,
+        drivers.length != 0
+          ? {
+              text: `${shortenFullName(pibDirector)}`,
+              alignment: "right",
+              fontSize: 14,
+              margin: [0, -14, 0, 0],
+            }
+          : null,
       ],
       defaultStyle: {
         font: "TimesNew",
@@ -437,6 +534,7 @@ const createShliakhPdf = async (req, res, next) => {
 
     pdfDoc.end();
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       message: error.message,
       code: 500,
