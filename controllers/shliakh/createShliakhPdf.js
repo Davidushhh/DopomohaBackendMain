@@ -1,4 +1,3 @@
-const fs = require("fs");
 const path = require("path");
 const PdfPrinter = require("pdfmake");
 
@@ -181,7 +180,7 @@ const createShliakhPdf = async (req, res, next) => {
           fontSize: 14,
         },
         {
-          text: "Микиті В.Ф.",
+          text: "Білецькому М.З.",
           alignment: "right",
           fontSize: 14,
         },
@@ -196,7 +195,7 @@ const createShliakhPdf = async (req, res, next) => {
           fontSize: 14,
         },
         {
-          text: `Шановний Вікторе Федоровичу!`,
+          text: `Шановний Мирославе Золтановичу!`,
           alignment: "center",
           fontSize: 14,
         },
@@ -298,7 +297,7 @@ const createShliakhPdf = async (req, res, next) => {
           fontSize: 14,
           margin: [0, -14, 0, 0],
         },
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -306,7 +305,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -314,7 +313,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -322,7 +321,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -330,7 +329,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -338,7 +337,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -346,7 +345,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -354,7 +353,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -362,7 +361,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -370,7 +369,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -378,7 +377,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -386,7 +385,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -394,14 +393,14 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: "Додаток 1",
               alignment: "right",
               fontSize: 14,
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -409,14 +408,14 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: "ПРОПОЗИЦІЇ",
               alignment: "center",
               fontSize: 14,
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -424,14 +423,14 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: "щодо виїзду за межі України водіїв в умовах правового режиму воєнного стану",
               alignment: "center",
               fontSize: 14,
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -439,7 +438,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               table: {
                 widths: [
@@ -459,7 +458,7 @@ const createShliakhPdf = async (req, res, next) => {
               fontSize: 10,
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -467,7 +466,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -475,7 +474,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -483,7 +482,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: " ",
               alignment: "justified",
@@ -491,7 +490,7 @@ const createShliakhPdf = async (req, res, next) => {
               margin: [25, 0, 0, 0],
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: `${
                 directorPosition.charAt(0).toUpperCase() +
@@ -501,7 +500,7 @@ const createShliakhPdf = async (req, res, next) => {
               fontSize: 14,
             }
           : null,
-        drivers.length != 0
+        drivers.length !== 0
           ? {
               text: `${shortenFullName(pibDirector)}`,
               alignment: "right",
