@@ -14,6 +14,7 @@ const createShliakhPdf = async (req, res, next) => {
     telContactPerson = "дані відсутні",
     daysCount = "дані відсутні",
     directorPosition = "дані відсутні",
+    aidRegisterId = "дані відсутні",
 
     drivers = [],
   } = req.body;
@@ -227,13 +228,13 @@ const createShliakhPdf = async (req, res, next) => {
           fontSize: 14,
         },
         {
-          text: `Набувач гуманітарної допомоги: ${organizationName}, код ЄДРПОУ: ${organizationCode}, ${organizationAdress}, e-mail: ${organizationMail}.`,
+          text: `Отримувач гуманітарної допомоги: ${organizationName}, код ЄДРПОУ: ${organizationCode}, ${organizationAdress}, e-mail: ${organizationMail}.`,
           alignment: "justified",
           margin: [25, 0, 0, 0],
           fontSize: 14,
         },
         {
-          text: `Представник набувача гуманітарної допомоги:`,
+          text: `Представник отримувача гуманітарної допомоги:`,
           alignment: "justified",
           margin: [25, 0, 0, 0],
           fontSize: 14,
@@ -241,6 +242,12 @@ const createShliakhPdf = async (req, res, next) => {
         {
           text: `${pibContactPerson}, номер телефону ${telContactPerson}.`,
           alignment: "justified",
+          fontSize: 14,
+        },
+        {
+          text: `Номер в Єдиному реєстрі отримувачів гуманітарної допомоги: ${aidRegisterId}`,
+          alignment: "justified",
+          margin: [25, 0, 0, 0],
           fontSize: 14,
         },
         {
