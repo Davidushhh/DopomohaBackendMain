@@ -16,6 +16,9 @@ const { signupValidation, loginValidation } = require("./authValidation");
 const {
   creditCompensationMiddleware,
 } = require("./creditCompensationMiddlewares");
+const {
+  eventCompensationMiddleware,
+} = require("./eventCompensationMiddlewares");
 
 module.exports = {
   ctrlWrapper,
@@ -34,4 +37,5 @@ module.exports = {
   loginValidation,
   authMiddleware,
   creditCompensationMiddleware,
+  eventCompensationMiddleware,
 };
