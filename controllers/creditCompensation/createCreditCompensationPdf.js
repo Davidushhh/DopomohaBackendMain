@@ -17,6 +17,7 @@ const createCreditCompensationPdf = async (req, res, next) => {
     dovidkaBank = false,
     productionInfo = false,
     financePlan = false,
+    vidomistProSlatu = false,
   } = req.body;
 
   try {
@@ -42,6 +43,8 @@ const createCreditCompensationPdf = async (req, res, next) => {
       productionInfo:
         "іформація щодо підтвердження даних про виробництво промислової/сг продукції;",
       financePlan: "фінансово-виробничий план;",
+      vidomistProSlatu:
+        "відомості щодо щомісячного зобов’язання сплати відсотків;",
     };
 
     const attachments = [
@@ -51,6 +54,7 @@ const createCreditCompensationPdf = async (req, res, next) => {
       { key: "dovidkaBank", value: dovidkaBank },
       { key: "productionInfo", value: productionInfo },
       { key: "financePlan", value: financePlan },
+      { key: "vidomistProSlatu", value: vidomistProSlatu },
     ]
       .filter((item) => item.value)
       .map((item) => attachmentsPlaceholders[item.key]);
