@@ -11,7 +11,7 @@ const createCreditCompensationPdf = async (req, res, next) => {
     directorInitials = "дані відсутні",
     bankName = "дані відсутні",
     projectName = "дані відсутні",
-    projectAddress = "",
+    vidomistDerzhDop = "",
     creditFile = false,
     vupuska = false,
     dovidkaZaborg = false,
@@ -214,7 +214,7 @@ const createCreditCompensationPdf = async (req, res, next) => {
           margin:  [0, 0, 0, 0] ,
         },
         {
-          text: projectAddress,
+          text: vidomistDerzhDop,
           alignment: "justify",
           fontSize: 11,
           margin: [0, 0, 0, 10],
