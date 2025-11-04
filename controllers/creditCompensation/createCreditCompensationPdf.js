@@ -11,6 +11,7 @@ const createCreditCompensationPdf = async (req, res, next) => {
     directorInitials = "дані відсутні",
     bankName = "дані відсутні",
     projectName = "дані відсутні",
+    projectAddress = "",
     creditFile = false,
     vupuska = false,
     dovidkaZaborg = false,
@@ -198,6 +199,19 @@ const createCreditCompensationPdf = async (req, res, next) => {
           alignment: "justify",
           fontSize: 11,
           margin: [0, 0, 0, 0],
+        },
+        {
+          text: ` Відомості про державну допомогу, отриману протягом останніх трьох років (її форму та мету), зазначити: `,
+          alignment: "justify",
+          fontSize: 11,
+          margin:  [0, 0, 0, 0] ,
+        },
+        {
+          text: projectAddress,
+          alignment: "justify",
+          fontSize: 11,
+          margin: [0, 0, 0, 10],
+          decoration: "underline",
         },
         {
           text: ` Даю згоду на використання моїх персональних даних згідно із Законом України „Про захист персональних даних”`,
