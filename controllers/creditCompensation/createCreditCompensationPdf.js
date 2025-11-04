@@ -139,8 +139,15 @@ const createCreditCompensationPdf = async (req, res, next) => {
           fontSize: 13,
           margin: [260, 0, 0, 20],
         },
+        // на участь у Програмі Компенсації відсотків
         {
           text: "ЗАЯВА",
+          alignment: "center",
+          fontSize: 14,
+          margin: [0, 0, 0, 0],
+        },
+        {
+          text: "на участь у Програмі Компенсації відсотків",
           alignment: "center",
           fontSize: 14,
           margin: [0, 0, 0, 10],
