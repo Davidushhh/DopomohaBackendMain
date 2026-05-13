@@ -19,6 +19,9 @@ const {
 const {
   eventCompensationMiddleware,
 } = require("./eventCompensationMiddlewares");
+const {
+  financialSupportDamageMiddleware,
+} = require("./financialSupportDamageMiddlewares");
 
 module.exports = {
   ctrlWrapper,
@@ -38,4 +41,5 @@ module.exports = {
   authMiddleware,
   creditCompensationMiddleware,
   eventCompensationMiddleware,
+  financialSupportDamageMiddleware,
 };

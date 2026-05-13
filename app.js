@@ -11,6 +11,7 @@ const employerRouter = require("./routes/api/employerRouter");
 const borderRouter = require("./routes/api/borderRouter");
 const creditCompensationRouter = require("./routes/api/creditCompensationRouter");
 const eventsCompensationRouter = require("./routes/api/eventsCompensationRouter");
+const financialSupportDamageRouter = require("./routes/api/financialSupportDamageRouter");
 
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
@@ -28,6 +29,10 @@ app.use("/api/veteran-services", veteranServicesRouter);
 app.use("/api/employer", employerRouter);
 app.use("/api/credit-compensation", creditCompensationRouter);
 app.use("/api/events-compensation", eventsCompensationRouter);
+app.use(
+  "/api/financial-support-damage",
+  financialSupportDamageRouter
+);
 
 const corsOptions = {
   origin: "http://192.168.100.132",
