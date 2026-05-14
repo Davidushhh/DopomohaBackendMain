@@ -8,6 +8,10 @@ const fullWidthLine = (w = 515) => ({
   margin: [0, 2, 0, 4],
 });
 
+/** Right column for header (from mid-page), same idea as event/credit compensation PDFs */
+const HEADER_LEFT_INSET = 210;
+const HEADER_TEXT_WIDTH = 515 - HEADER_LEFT_INSET;
+
 const createFinancialSupportDamagePdf = async (req, res, next) => {
   const {
     subjectEntity = "",
@@ -58,30 +62,36 @@ const createFinancialSupportDamagePdf = async (req, res, next) => {
       },
       content: [
         {
-          text: "Департамент економічного та регіонального розвитку Закарпатської обласної державної адміністрації – обласної військової адміністрації",
-          alignment: "left",
-          fontSize: 12,
-          margin: [0, 0, 0, 16],
-        },
-        {
-          text: "Суб’єкт господарювання",
-          alignment: "left",
-          fontSize: 12,
-          margin: [0, 0, 0, 0],
-        },
-        subjectEntity
-          ? {
-              text: subjectEntity,
-              decoration: "underline",
+          stack: [
+            {
+              text: "Департамент економічного та регіонального розвитку Закарпатської обласної державної адміністрації – обласної військової адміністрації",
+              alignment: "left",
               fontSize: 12,
-              margin: [0, 2, 0, 2],
-            }
-          : fullWidthLine(),
-        {
-          text: "(повне найменування юридичної особи, код згідно з ЄДРПОУ, прізвище, ім’я, по батькові фізичної особи-підприємця, РНОКПП або серія та номер паспорта (для фізичних осіб, які мають відмітку в паспорті про право здійснювати платежі за серією та номером паспорта))",
-          fontSize: 10,
-          alignment: "left",
-          margin: [0, 0, 0, 18],
+              margin: [0, 0, 0, 16],
+            },
+            {
+              text: "Суб’єкт господарювання",
+              alignment: "left",
+              fontSize: 12,
+              margin: [0, 0, 0, 0],
+            },
+            subjectEntity
+              ? {
+                  text: subjectEntity,
+                  decoration: "underline",
+                  fontSize: 12,
+                  margin: [0, 2, 0, 2],
+                }
+              : fullWidthLine(HEADER_TEXT_WIDTH),
+            {
+              text: "(повне найменування юридичної особи, код згідно з ЄДРПОУ, прізвище, ім’я, по батькові фізичної особи-підприємця, РНОКПП або серія та номер паспорта (для фізичних осіб, які мають відмітку в паспорті про право здійснювати платежі за серією та номером паспорта))",
+              fontSize: 10,
+              alignment: "left",
+              margin: [0, 0, 0, 0],
+            },
+          ],
+          width: HEADER_TEXT_WIDTH,
+          margin: [HEADER_LEFT_INSET, 0, 0, 18],
         },
         {
           text: "Заява\nна отримання фінансової підтримки",
